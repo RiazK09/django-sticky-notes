@@ -1,0 +1,31 @@
+{% extends "notes/base.html" %}
+
+{% block title %}
+    Delete Note
+{% endblock %}
+
+{% block content %}
+    <!-- Show the note title so the user knows
+         which note is about to be deleted -->
+    <h2>Delete Note</h2>
+
+    <p>
+        Are you sure you want to delete
+        <strong>{{ note.title }}</strong>?
+    </p>
+
+    <!-- The deletion only happens after this form is submitted -->
+    <form method="post">
+        <!-- Django requires this token to protect submitted forms -->
+        {% csrf_token %}
+
+        <button type="submit">
+            Delete Note
+        </button>
+    </form>
+
+    <!-- Return to the note without deleting it -->
+    <a href="{% url 'note_detail' note.pk %}">
+        Cancel
+    </a>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "notes/base.html" %}
+
+{% block title %}
+    {{ note.title }}
+{% endblock %}
+
+{% block content %}
+    <!-- Show the full details of one sticky note -->
+    <article>
+        <h2>{{ note.title }}</h2>
+
+        <p>{{ note.content }}</p>
+    </article>
+
+    <!-- Links for editing, deleting, or returning to all notes -->
+    <a href="{% url 'note_update' note.pk %}">
+        Edit Note
+    </a>
+
+    <a href="{% url 'note_delete' note.pk %}">
+        Delete Note
+    </a>
+
+    <a href="{% url 'note_list' %}">
+        Back to All Notes
+    </a>
+{% endblock %}

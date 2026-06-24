@@ -1,0 +1,39 @@
+{% extends "notes/base.html" %}
+
+{% block title %}
+    {% if form.instance.pk %}
+        Edit Note
+    {% else %}
+        Create Note
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <!-- Change the heading depending on whether the user
+         is creating a new note or editing an existing one -->
+    <h2>
+        {% if form.instance.pk %}
+            Edit Note
+        {% else %}
+            Create Note
+        {% endif %}
+    </h2>
+
+    <!-- The POST method sends the form information to Django -->
+    <form method="post">
+        <!-- Django requires this token to protect submitted forms -->
+        {% csrf_token %}
+
+        <!-- Display the title and content fields -->
+        {{ form.as_p }}
+
+        <button type="submit">
+            Save Note
+        </button>
+    </form>
+
+    <!-- Return to the main page without saving -->
+    <a href="{% url 'note_list' %}">
+        Cancel
+    </a>
+{% endblock %}

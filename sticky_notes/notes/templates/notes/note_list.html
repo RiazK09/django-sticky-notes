@@ -1,0 +1,29 @@
+{% extends "notes/base.html" %}
+
+{% block title %}
+    All Notes
+{% endblock %}
+
+{% block content %}
+    <!-- Link to the page where a new note can be created -->
+    <a href="{% url 'note_create' %}">
+        Add New Note
+    </a>
+
+    <!-- Show each saved note -->
+    {% for note in notes %}
+        <article>
+            <h2>
+                <a href="{% url 'note_detail' note.pk %}">
+                    {{ note.title }}
+                </a>
+            </h2>
+
+            <p>{{ note.content }}</p>
+        </article>
+
+    <!-- Show this message when no notes have been created yet -->
+    {% empty %}
+        <p>No notes have been added yet.</p>
+    {% endfor %}
+{% endblock %}

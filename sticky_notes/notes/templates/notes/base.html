@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic page setup and responsive scaling -->
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <!-- Child templates can replace this page title -->
+    <title>
+        {% block title %}
+            Sticky Notes
+        {% endblock %}
+    </title>
+
+    <!-- Link the shared stylesheet used by all pages. -->
+    <link
+        rel="stylesheet"
+        href="{% static 'notes/styles.css' %}"
+    >
+</head>
+<body>
+    <!-- Shared heading shown on every page -->
+    <header>
+        <h1>Sticky Notes</h1>
+    </header>
+
+    <!-- Each child template will add its own page content here -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
